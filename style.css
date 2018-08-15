@@ -1,0 +1,14 @@
+/* .img-fluid{
+ max-width: 100%;
+}
+#head {
+    height: 350px;
+    width: 100%;
+} */
+body{
+    background:url(../images/fondo.jpg);
+    background-size: cover;
+}
+.categoria{
+    color: aliceblue;
+}
