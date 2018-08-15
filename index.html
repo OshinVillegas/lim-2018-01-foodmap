@@ -16,20 +16,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.3/leaflet.css" />
 
   </head>
-
   <body>
-    <!-- <div id=''>
-        <img src="../images/cocina.jpg" id="head"class="img-fluid" alt="Responsive image">
-    </div> -->
-   
-   <img src="../images/logo2.png" alt="">
-
-    <div id="filter" class = "container">
-      <label class='categoria'>Categoria :</label><select class="form-control" id="category" style="width:300px"></select>
-    </div>
-    <br>
-    <div id="result">
-      <div id="map" style="width:500px; height:300px;"></div>
+    <script>
+      $.LoadingOverlay("show", {
+          image: "",
+          background: "rgb(255,255,255)",
+          text: "Cargando Food Map..."
+        });</script>
+    <div id='contenido'>
+      <img src="../images/logo2.png" class="img-fluid" alt="Responsive image">
+         <div id='filtro' >
+          <div id="filter" class="container">
+            <label class='categoria'>Seleccione:</label>
+            <select class="form-control" id="category" style="width:300px"></select>
+          </div>
+            <br>
+          <div id="result">
+            <div id="map" style="width:600px; height:500px;"></div>
+          </div>
+        </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   crossorigin="anonymous"></script>

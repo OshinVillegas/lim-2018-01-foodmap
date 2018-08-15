@@ -8,7 +8,11 @@ let lstRestaurants = [];
 
 $(document).ready(function () {
 
-  $.LoadingOverlay("show");
+  $.LoadingOverlay("show", {
+    image: "",
+    background: "rgb(255,255,255)",
+    text: "Cargando Food Map..."
+  });
 
   // Obteniendos tipos de restaurantes del api de datos abiertos de miraflores
   let keyApi = '221963a66d7626ddce1417c481c60b142e19ee65';
@@ -25,7 +29,7 @@ $(document).ready(function () {
   }).done(function () {
     // Cargar datos en el select
     selectCategories.empty();
-    selectCategories.append('<option value="0">Seleccione</option>');
+    selectCategories.append('<option value="0">Tipo de Comida</option>');
     $.each(lstCategories, function (key, value) {
       selectCategories.append('<option value="' + value['CODIGO-TIPO'] + '">' + value['TIPO-RESTAURANT'] + '</option>');
     });
@@ -83,13 +87,9 @@ selectCategories.on('change', function () {
 
     let coordinates = [latitude, longitude];
 
-    let icon = L.icon({
-      iconUrl: '../images/restaurant.png',
-      iconSize: [32, 32],
-    });
+    
 
     let option = {
-      icon: icon,
       zIndexOffset: indice,
     };
 

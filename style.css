@@ -1,14 +1,16 @@
-/* .img-fluid{
+.img-fluid{
  max-width: 100%;
+ height: auto;
 }
-#head {
-    height: 350px;
-    width: 100%;
-} */
+
 body{
     background:url(../images/fondo.jpg);
     background-size: cover;
 }
 .categoria{
-    color: aliceblue;
+    color:white;
+}
+#filtro{
+margin-left: 50%;
+margin-top: -38%;
 }
