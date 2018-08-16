@@ -1,0 +1,46 @@
+[
+  {
+    "codigo": 1,
+    "nombre": "Carnes y Parrillas"
+  },
+  {
+    "codigo": 2,
+    "nombre": "Chifas"
+  },
+  {
+    "codigo": 3,
+    "nombre": "Comida Criolla"
+  },
+  {
+    "codigo": 4,
+    "nombre": "Comida de la Selva"
+  },
+  {
+    "codigo": 5,
+    "nombre": "Comida Japonesa / Sushi / Nikei"
+  },
+  {
+    "codigo": 6,
+    "nombre": "Comida Peruana Internacional"
+  },
+  {
+    "codigo": 7,
+    "nombre": "Fusion"
+  },
+  {
+    "codigo": 8,
+    "nombre": "Panaderia - Pasteleria"
+  },
+  {
+    "codigo": 9,
+    "nombre": "Pescados y Mariscos"
+  },
+  {
+    "codigo": 10,
+    "nombre": "Restaurante Bar"
+  },
+  {
+    "codigo": 11,
+    "nombre": "Sandwicherias y Cafes"
+  }
+]

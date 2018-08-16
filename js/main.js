@@ -1,8 +1,7 @@
 const selectCategories = $('#category');
 
-let map; 
+let map;
 
-//Inicializar arreglos
 let lstCategories = [];
 let lstRestaurants = [];
 
@@ -14,39 +13,26 @@ $(document).ready(function () {
     text: "Cargando Food Map..."
   });
 
-  // Obteniendos tipos de restaurantes del api de datos abiertos de miraflores
-  let keyApi = '221963a66d7626ddce1417c481c60b142e19ee65';
-  let sourceCategories = 'http://miraflores.cloudapi.junar.com/api/v2/datastreams/TIPO-DE-RESTA/data.pjson/?auth_key=' + keyApi;
+  let getUrl = window.location;
+  let baseUrl = getUrl.protocol + "//" + getUrl.host;
+
+  let sourceCategories = baseUrl + '/data/categorias.json';
+  let sourceRestaurants = baseUrl + '/data/restaurantes.json';
 
   $.get(sourceCategories, function (data) {
-    console.log(data);
-    let lastPos = data.result.length - 1;
-    console.log(data.result);
-    lstCategories = $.map(data.result, function (fila, indice) {
-      return (indice > 0 && indice < lastPos) ? fila : null;
-    });
-    console.log(lstCategories);
+    lstCategories = data;
   }).done(function () {
-    // Cargar datos en el select
     selectCategories.empty();
-    selectCategories.append('<option value="0">Tipo de Comida</option>');
+    selectCategories.append('<option value="0">Tipo De Comida</option>');
     $.each(lstCategories, function (key, value) {
-      selectCategories.append('<option value="' + value['CODIGO-TIPO'] + '">' + value['TIPO-RESTAURANT'] + '</option>');
+      selectCategories.append('<option value="' + value.codigo + '">' + value.nombre + '</option>');
     });
     selectCategories.prop('selectedIndex', 0);
   });
 
-  // Obteniendo coordenadas usando https://www.gps-coordinates.net/
-  let getUrl = window.location;
-  let baseUrl = getUrl.protocol + "//" + getUrl.host;
-
-  let sourceRestaurants =  'https://oshinvillegas.github.io/lim-2018-01-foodmap/data/restaurantes.json';
-
   $.get(sourceRestaurants, function (data) {
     lstRestaurants = data;
-    console.log(lstRestaurants);
   });
-
 
   map = L.map('map').setView([-12.121719, -77.02925], 14);
 
@@ -57,7 +43,6 @@ $(document).ready(function () {
     attribution: osmAttrib,
   }).addTo(map);
 
-
   setTimeout(function () {
     $.LoadingOverlay("hide");
   }, 2000);
@@ -66,30 +51,32 @@ $(document).ready(function () {
 
 selectCategories.on('change', function () {
   let categoryId = parseInt($(this).val());
-  console.log(categoryId);
+
   let lstRestaurantsByCategory = $.map(lstRestaurants, function (obj, index) {
     return (index > 0 && obj.categoriaId === categoryId) ? obj : null;
   });
-  console.log(lstRestaurantsByCategory);
 
-  //Pintar datos en mapa
-  //funcion para limpiar mapa
+  loadMap(lstRestaurantsByCategory);
+});
+
+function loadMap(data) {
+
   map.eachLayer(function (layer) {
     if (layer instanceof L.Marker) {
       map.removeLayer(layer);
     }
   });
 
-  $.each(lstRestaurantsByCategory, function (indice, obj) {
+  $.each(data, function (indice, obj) {
     let title = obj.nombre;
     let latitude = obj.latitude;
     let longitude = obj.longitude;
 
-    let coordinates = [latitude, longitude];
+    let myLatLng = [latitude, longitude];
 
-    
-
-    let option = {
+  
+    let myOption = {
+     
       zIndexOffset: indice,
     };
 
@@ -100,9 +87,10 @@ selectCategories.on('change', function () {
     message += '<tr><td><b>Telefonos : </b>' + obj.telefono + '</td></tr>';
     message += '</table>';
 
-    L.marker(coordinates, option)
+    L.marker(myLatLng, myOption)
       .bindTooltip(title)
       .bindPopup(message)
       .addTo(map);
   });
-});
+
+}
