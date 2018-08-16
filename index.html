@@ -18,18 +18,23 @@
   </head>
   <body>
   
-    <div id='contenido'>
-      <img src="https://oshinvillegas.github.io/lim-2018-01-foodmap/images/logo2.png" class="logo" >
-         <div id='filtro' >
+    <div id='contenido'class='row'>
+      <div class='col-sm-6'>
+        <img src="https://oshinvillegas.github.io/lim-2018-01-foodmap/images/logo2.png" class="logo">
+      </div>
+       <div class='col-sm-6'>
+        <div id='filtro'>
           <div id="filter" class="container">
             <label class='categoria'>Seleccione:</label>
             <select class="form-control" id="category" style="width:300px"></select>
           </div>
-            <br>
+          <br>
           <div id="result">
-            <div id="map"  style="width:600px; height:500px;"></div>
+            <div id="map" style="width:auto; height:600px;"></div>
           </div>
         </div>
+       </div>  
+         
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   crossorigin="anonymous"></script>

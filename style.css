@@ -1,4 +1,4 @@
-.logo{
+#contenido{
  max-width: 100%;
  height: auto;
  margin-top: 6%;
@@ -11,11 +11,4 @@ body{
 }
 .categoria{
     color:white;
-}
-#filtro{
-margin-left: 50%;
-margin-top: -36%;
- max-width: 100%;
-    height: auto;
-
 }
