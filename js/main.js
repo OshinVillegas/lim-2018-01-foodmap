@@ -16,8 +16,9 @@ $(document).ready(function () {
   let getUrl = window.location;
   let baseUrl = getUrl.protocol + "//" + getUrl.host;
 
-  let sourceCategories = baseUrl + 'https://oshinvillegas.github.io/lim-2018-01-foodmap/data/categorias.json';
-  let sourceRestaurants = baseUrl + 'https://oshinvillegas.github.io/lim-2018-01-foodmap/data/restaurantes.json';
+  let sourceCategories ='https://oshinvillegas.github.io/lim-2018-01-foodmap/data/categorias.json';
+  
+  let sourceRestaurants = 'https://oshinvillegas.github.io/lim-2018-01-foodmap/data/restaurantes.json';
 
   $.get(sourceCategories, function (data) {
     lstCategories = data;
